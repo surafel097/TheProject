@@ -20,14 +20,14 @@ export default function WidgetLg() {
             
         } catch(err) {
             // console.log('error has occured ' + err) ;
-            console.log(err.response.data) ;
-            console.log(err.response.status) ;
-            console.log(err.response.headers) ;
+            console.log(err) ;
+            
         }
         
     } 
     fetchData() ;
 }, []) ;
+
 
 
   const Button = ({ type }) => {
@@ -65,7 +65,7 @@ export default function WidgetLg() {
 
           <td className="widgetLgAmount">{i.locations[0]}</td>
           <td className="widgetLgStatus">
-            <Button type={i.active?"Approved":"Rejected"} />
+            <Button type={i.status} />
           </td>
           
           

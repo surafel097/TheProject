@@ -46,6 +46,7 @@ export default function User() {
     const [result, setResult] = React.useState("");
     let imageFile = null ;
     function uploader(e) {
+      e.preventDefault() ;
       imageFile = e.target.files[0];
       setfile(e.target.files[0])
       setfileName(e.target.files[0].name) ;
@@ -61,9 +62,11 @@ export default function User() {
   }
 
   const { result, uploader } = useDisplayImage();
+  const [stat , setStat] = useState("") ;
 
 
   useEffect(() => {
+    
     const fetchPrivateDate = async () => {
       const config = {
         headers: {
@@ -81,34 +84,57 @@ export default function User() {
         setError("You are not authorized please login");
       }
     };
-    console.log(privateData)
+
+
+  // const handleSubmit = async (variable) => {
+  //   //e.preventDefault() ;
+  //   try{ 
+      
+  //     const response = await createAxios.patch( `/orgs/${id}`  , 
+  //   { 
+  //     "status": stat
+      
+
+  //    }, config );
+  //    setSuccess("SuccessFully Added");
+  //    setTimeout(() => {
+  //     setSuccess("")
+  //    }, 5000);
+   
+  //   } catch(error) {
+  //     console.log(error) ;
+  //     console.log('Failed') ;
+  //   }
+   
+  // }
+
+
+  // if(stat != null) {
+  //   handleSubmit() ;
+  // }
+  console.log(privateData)
     fetchPrivateDate();
   }, []);
 
 
-  const handleSubmit = async (e) => {
-    e.preventDefault() ;
-    try{ 
-      
-      const { data } = await createAxios.patch( `/orgs/${localStorage.getItem('id')}`  , 
-    { 
-      "name": userName ,
-      "description": description ,
-      "email": Email ,
-      "phoneNum": phone
 
-     }, config );
-     setSuccess("SuccessFully Added");
-     setTimeout(() => {
-      setSuccess("")
-     }, 5000);
-   
-    } catch(error) {
-      console.log(error) ;
-      console.log('Failed') ;
-    }
-   
+
+  // const handleReq = (variable) => {
+  //   console.log(variable) ;
+  //   if(variable == 'Approve') {
+  //     setStat('Active')
+  //   }
+  //   else if(variable == 'Reject') {
+  //     setStat('Rejected') ;
+  //   }
+    
+  //   handleSubmit() ;
+  // }
+  const handleClick = (event) =>  {
+    console.log(event)
   }
+
+ 
   const imagePath = `http://localhost:4000/` + privateData.imagePath ;
   return (
     <div className="user">
@@ -116,8 +142,8 @@ export default function User() {
       <div className="userTitleContainer">
         <h1 className="userTitle">Inspect</h1>
         <div>
-        <button class="button1">Approve</button>
-        <button class="button2">Reject</button>
+        <button onClick={handleClick('This is Active')} class="button1">Approve</button>
+        <button onClick={handleClick('This got Rejected')} class="button2">Reject</button>
         </div>
       </div>
       <div className="userContainer">
@@ -161,7 +187,7 @@ export default function User() {
         <div className="userUpdate">
           <span className="userUpdateTitle">our Legal Paper</span>
          <div>
-           <img src={`http://localhost:4000/${privateData.imagePath}`} alt="" className="userUpdateImg" />
+           <img src={`http://localhost:4000/${privateData.photo}`} alt="" className="userUpdateImg" />
          </div>
         </div>
       </div>
