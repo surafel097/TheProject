@@ -53,7 +53,6 @@ import NewProduct from "../../pages/newProduct/NewProduct";
 import Profile from '../../pages/profile/profile'  ;
 import Home2 from '../../pages/home2/Home2'
 
-
 const createAxios = axios.create({
   baseURL: `http://localhost:4000/api/v1` 
 }) ;

@@ -114,8 +114,11 @@ export default function User() {
     <div className="user">
       {Succcess && <span className="success-message">{Succcess}</span>}
       <div className="userTitleContainer">
-        <h1 className="userTitle">Edit Profile</h1>
-       
+        <h1 className="userTitle">Inspect</h1>
+        <div>
+        <button class="button1">Approve</button>
+        <button class="button2">Reject</button>
+        </div>
       </div>
       <div className="userContainer">
         <div className="userShow">
@@ -156,79 +159,10 @@ export default function User() {
           </div>
         </div>
         <div className="userUpdate">
-          <span className="userUpdateTitle">Edit</span>
-          <form className="userUpdateForm">
-            <div className="userUpdateLeft">
-              <div className="userUpdateItem">
-                <label>name</label>
-                <input
-                  onChange={(e) => setUserName(e.target.value)}
-                  value={userName}
-                  type="text"
-                  placeholder="annabeck99"
-                  className="userUpdateInput"
-                />
-              </div>
-              <div className="userUpdateItem">
-                <label>location</label>
-                <input
-                  onChange={(e) => setlocation(e.target.value)}
-                  value={location}
-                  type="text"
-                  placeholder="Anna Becker"
-                  className="userUpdateInput"
-                />
-              </div>
-              <div className="userUpdateItem">
-                <label>Email</label>
-                <input
-                  onChange={(e) => setEmail(e.target.value)}
-                  value={Email}
-                  type="text"
-                  placeholder="annabeck99@gmail.com"
-                  className="userUpdateInput"
-                />
-              </div>
-              <div className="userUpdateItem">
-                <label>Phone Number</label>
-                <input
-                  onChange={(e) => setPhone(e.target.value)}
-                  value={phone}
-                  type="text"
-                  placeholder="+1 123 456 67"
-                  className="userUpdateInput"
-                />
-              </div>
-              <div className="userUpdateItem">
-                <label>Description</label>
-                <TextField
-                  onChange={(e) => setDescription(e.target.value)}
-                  value={description}
-                  type="text"
-                  placeholder="New York | USA"
-                  className="userUpdateInput"
-                />
-              </div>
-            </div>
-            <div className="userUpdateRight">
-              <div className="userUpdateUpload">
-                <img
-                  className="userUpdateImg"
-                  src={result?result:imagePath}
-                  alt=""
-                />
-                <label htmlFor="file">
-                  <Publish className="userUpdateIcon" />
-                </label>
-                <input 
-                onChange={(e) => {
-                  setImage(e.target.files[0]);
-                  uploader(e);}}
-                type="file" id="file" style={{ display: "none" }} />
-              </div>
-              <button onClick={handleSubmit} className="userUpdateButton">Update</button>
-            </div>
-          </form>
+          <span className="userUpdateTitle">our Legal Paper</span>
+         <div>
+           <img src={`http://localhost:4000/${privateData.imagePath}`} alt="" className="userUpdateImg" />
+         </div>
         </div>
       </div>
     </div>

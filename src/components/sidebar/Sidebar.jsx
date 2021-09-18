@@ -46,7 +46,7 @@ export default function Sidebar() {
         </div>
       
           <ul className="sidebarList">
-            <Link to="/users" className="link">
+            <Link to="/new" className="link">
               <li className="sidebarListItem">
                 <PermIdentity className="sidebarIcon" />
                 Agents
